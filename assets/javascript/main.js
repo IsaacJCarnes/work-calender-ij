@@ -5,6 +5,21 @@ const currentDay = document.getElementById("currentDay");
 currentDay.textContent = moment().format("dddd, MMMM Do");
 
 const workDay = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+var taskMessages = ["", "", "", "", "", "", "", "", ""];
+var stringMessages = localStorage.getItem("messages");
+
+if(stringMessages == null){
+    updateDataset(); //Creates string version of taskMessages in localstorage
+} else {
+    //Sets message array to their local storage counterparts
+    taskMessages = JSON.parse(stringMessages);
+}
+
+function updateDataset(){
+    stringMessages = JSON.stringify(taskMessages);
+    localStorage.setItem("messages", stringMessages);
+    console.log(localStorage.getItem('messages'));
+}
 
 function base24To12(time){
     if(time < 12){
@@ -32,9 +47,17 @@ for(i = 0; i < workDay.length; i++){
     } else {
         taskBlock.classList = "future col-6";
     }
+    taskBlock.value = taskMessages[i];
+    taskBlock.id = i;
 
     var saveBtn = document.createElement("button");
     saveBtn.classList = "saveBtn col-1";
+    saveBtn.dataset.position = i;
+
+    saveBtn.onclick = function(){
+        taskMessages[this.dataset.position] = document.getElementById(this.dataset.position).value;
+        updateDataset();
+    };
 
     timeBlock.appendChild(hour);
     timeBlock.appendChild(taskBlock);
