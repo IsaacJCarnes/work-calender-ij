@@ -7,6 +7,6 @@ To use the website type inside one of the text areas and hit the corresponding s
 Here is a link to [github pages](https://isaacjcarnes.github.io/work-calender-ij/).
 
 Here is a screenshot of the website 
-![Alt text](https://github.com/IsaacJCarnes/work-calender-ij/blob/main/assets/images/web-screenshot.PNG "Website Screenshot")
+![Alt text](https://github.com/IsaacJCarnes/work-calender-ij/blob/main/assets/images/web-screenshot.png "Website Screenshot")
 
 Author: Isaac Joshua Carnes
